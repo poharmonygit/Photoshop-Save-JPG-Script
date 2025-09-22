@@ -18,7 +18,7 @@ This script helps you save your document with any format to "JPEG" format more e
 ## 📌 How to made action
 Place script file in a folder and then made an "action" in photoshop for running the script and give it function key (like F11) to run script quickly and automatically.
 
-* ####Guide with image
+**Guide with image**
 ### 1
 ![step1](./images/1_R.jpg)
 ### 2
@@ -34,7 +34,8 @@ Place script file in a folder and then made an "action" in photoshop for running
 ### 7
 ![step7](./images/7%20R.jpg)
 
-* ####Guide with video
+**Guide with video**
+
 [![watch on youtube](https://img.youtube.com/vi/hr1IclAEiFI/0.jpg)](https://www.youtube.com/watch?v=hr1IclAEiFI)
 
 
