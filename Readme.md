@@ -1,13 +1,14 @@
-#### This script helps you save your document with any format to "JPEG" format more easily and quickly.
+## 💡 About
+This script helps you save your document with any format to "JPEG" format more easily and quickly.
 
-* This script written based on Adobe Photoshop "Save as" algorithm and not tested with other apps.
+#### This script written based on Adobe Photoshop "Save as" algorithm and not tested with other apps.
 
 ## 🔩 Details and Features
-Choose Option: sRGB or Embedded Color Profile /
-Choose Option: How to Deal with Repeated Filename /
-Quality: Maximum (12) /
-Format Option: Standard Baseline /
-Save Location: Same Folder of Original Document /
+* Choose Option: sRGB or Embedded Color Profile
+* Choose Option: How to Deal with Repeated Filename
+* Quality: Maximum (12)
+* Format Option: Standard Baseline
+* Save Location: Same Folder of Original Document
 
 
 ## ⚙️ How to use script in photoshop
