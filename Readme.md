@@ -2,7 +2,7 @@
 
 * This script written based on Adobe Photoshop "Save as" algorithm and not tested with other apps.
 
---- Ver1.3 Details and Features ---
+## 🔩 Details and Features
 Choose Option: sRGB or Embedded Color Profile /
 Choose Option: How to Deal with Repeated Filename /
 Quality: Maximum (12) /
