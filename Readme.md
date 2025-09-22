@@ -30,9 +30,9 @@ Place script file in a folder and then made an "action" in photoshop for running
 ### 5
 ![step5](./images/5_R.jpg)
 ### 6
-![step6](./images/6_R.jpg)
+![step6](./images/6%20R.jpg)
 ### 7
-![step7](./images/7_R.jpg)
+![step7](./images/7%20R.jpg)
 
 * Guide with video
 [![watch on youtube](https://img.youtube.com/vi/hr1IclAEiFI/0.jpg)](https://www.youtube.com/watch?v=hr1IclAEiFI)
