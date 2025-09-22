@@ -47,5 +47,5 @@ Place script file in a folder and then made an "action" in photoshop for running
 This project is released under the MIT license.
 
 
-## 🌐 Hi
+## 🌐 it's po
 https://poharmony.com
