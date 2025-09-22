@@ -9,6 +9,9 @@ Quality: Maximum (12) /
 Format Option: Standard Baseline /
 Save Location: Same Folder of Original Document /
 
+## ⚙️ How to use script in photoshop
+1. Download 'po_Save_JPG_Script.js' script file.
+2. in photoshop: **File > Scripts > Browse > choose script file > Load**
 
 ** Place script file in a folder and then made an "action" in photoshop for running the script and give it function key (like F11) to run script automatically.
 ## 🎥 How to made action
