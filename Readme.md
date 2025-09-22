@@ -1,4 +1,4 @@
-This script helps you save your document with any format to "JPEG" format more easily and quickly.
+#### This script helps you save your document with any format to "JPEG" format more easily and quickly.
 
 * This script written based on Adobe Photoshop "Save as" algorithm and not tested with other apps.
 
