@@ -22,8 +22,8 @@ Place script file in a folder and then made an "action" in photoshop for running
 
 
 ## ⚠️ Notes
-1. This script written based on Adobe Photoshop "Save as" algorithm and not tested with other apps.
-2. If you use action, place script file in a folder that don't want move or delete it in future.
+* This script written based on Adobe Photoshop "Save as" algorithm and not tested with other apps.
+* If you use action, place script file in a folder that don't want move or delete it in future.
 
 ## 📜 License
 This project is released under the MIT license.
