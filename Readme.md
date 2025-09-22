@@ -13,9 +13,10 @@ Save Location: Same Folder of Original Document /
 1. Download 'po_Save_JPG_Script.js' script file.
 2. in photoshop: **File > Scripts > Browse > choose script file > Load**
 
-# Place script file in a folder and then made an "action" in photoshop for running the script and give it function key (like F11) to run script automatically.
+### Place script file in a folder and then made an "action" in photoshop for running the script and give it function key (like F11) to run script automatically.
 ## 🎥 How to made action
 [![watch on youtube](https://img.youtube.com/vi/hr1IclAEiFI/0.jpg)](https://www.youtube.com/watch?v=hr1IclAEiFI)
+https://www.youtube.com/watch?v=hr1IclAEiFI
 
 
 
