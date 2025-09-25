@@ -1,48 +1,84 @@
-// Save a JPEG Copy Script for Photoshop v1.3
+// Save a JPEG Copy Script for Photoshop v1.4
 // Choose Option: sRGB or Embedded Color Profile | Choose Option: How to Deal with Repeated Filename | Quality: Maximum | Format Option: Standard Baseline
 // poharmony
 
-
 if (documents.length > 0) {
     var doc = activeDocument;
-    var originalPath = doc.path;
     var originalName = doc.name.replace(/\.[^\.]+$/, '');
     var extension = ".jpg";
-    var originalProfile = doc.colorProfileName;
 
-    var profile = askProfileChoice();
-    if (profile) {
-        var tempConverted = false;
+    var originalPath;
+    try {
+        originalPath = doc.path;
+    } catch (e) {
+        var saveFile = File.saveDialog("Choose a location to save the file", "*.jpg");
+        if (saveFile) {
+            originalPath = saveFile.path;
+            originalName = saveFile.name.replace(/\.[^\.]+$/, '');
+        } else {
+            alert("No location selected. Operation canceled.");
+            done = true;
+        }
+    }
 
-        if (profile === "sRGB") {
-            try {
-                doc.convertProfile("sRGB IEC61966-2.1", Intent.PERCEPTUAL, true, true);
-                tempConverted = true;
-            } catch (e) {
-                alert("Error converting to sRGB: " + e.message);
-            }
+    if (typeof done !== 'undefined' && done) {
+    } else {
+        var originalProfile = null;
+        try {
+            originalProfile = doc.colorProfileName;
+        } catch (e) {
+            originalProfile = null;
         }
 
-        var baseName = originalName + (profile === "sRGB" ? "_edts" : "_edt");
-        var newName = baseName + extension;
-        var savePath = new File(originalPath + "/" + newName);
+        var profile = askProfileChoice();
+        if (profile) {
+            var tempConverted = false;
 
-        if (savePath.exists) {
-            var choice = showOverwriteDialog(newName);
-            if (choice === 'cancel') {
-                alert("The operation was canceled.");
-                if (tempConverted) {
-                    doc.convertProfile(originalProfile, Intent.PERCEPTUAL, true, true);
+            if (profile === "sRGB") {
+                try {
+                    doc.convertProfile("sRGB IEC61966-2.1", Intent.PERCEPTUAL, true, true);
+                    tempConverted = true;
+                } catch (e) {
+                    alert("Error converting to sRGB: " + e.message);
+                }
+            }
+
+            var baseName = originalName + (profile === "sRGB" ? "_edts" : "_edt");
+            var newName = baseName + extension;
+            var savePath = new File(originalPath + "/" + newName);
+
+            if (savePath.exists) {
+                var choice = showOverwriteDialog(newName);
+                if (choice === 'cancel') {
+                    alert("The operation was canceled.");
+                    if (tempConverted && originalProfile) {
+                        try { doc.convertProfile(originalProfile, Intent.PERCEPTUAL, true, true); } catch (e) {}
+                    }
+                } else {
+                    if (choice === 'new') {
+                        var counter = 2;
+                        while (savePath.exists) {
+                            newName = baseName + counter + extension;
+                            savePath = new File(originalPath + "/" + newName);
+                            counter++;
+                        }
+                    }
+
+                    var saveOptions = new JPEGSaveOptions();
+                    saveOptions.quality = 12;
+                    saveOptions.embedColorProfile = true;
+                    saveOptions.formatOptions = FormatOptions.STANDARDBASELINE;
+                    saveOptions.matte = MatteType.NONE;
+
+                    doc.saveAs(savePath, saveOptions, true, Extension.LOWERCASE);
+
+                    if (tempConverted && originalProfile) {
+                        try { doc.convertProfile(originalProfile, Intent.PERCEPTUAL, true, true); } catch (e) {}
+                    }
+
+                    alert(newName + "\nSaved with " + (profile === "sRGB" ? "sRGB" : "embedded") + " profile.");
                 }
             } else {
-                if (choice === 'new') {
-                    var counter = 2;
-                    while (savePath.exists) {
-                        newName = baseName + counter + extension;
-                        savePath = new File(originalPath + "/" + newName);
-                        counter++;
-                    }
-                }
 
                 var saveOptions = new JPEGSaveOptions();
                 saveOptions.quality = 12;
@@ -52,30 +88,15 @@ if (documents.length > 0) {
 
                 doc.saveAs(savePath, saveOptions, true, Extension.LOWERCASE);
 
-                if (tempConverted) {
-                    doc.convertProfile(originalProfile, Intent.PERCEPTUAL, true, true);
+                if (tempConverted && originalProfile) {
+                    try { doc.convertProfile(originalProfile, Intent.PERCEPTUAL, true, true); } catch (e) {}
                 }
 
                 alert(newName + "\nSaved with " + (profile === "sRGB" ? "sRGB" : "embedded") + " profile.");
             }
         } else {
-
-            var saveOptions = new JPEGSaveOptions();
-            saveOptions.quality = 12;
-            saveOptions.embedColorProfile = true;
-            saveOptions.formatOptions = FormatOptions.STANDARDBASELINE;
-            saveOptions.matte = MatteType.NONE;
-
-            doc.saveAs(savePath, saveOptions, true, Extension.LOWERCASE);
-
-            if (tempConverted) {
-                doc.convertProfile(originalProfile, Intent.PERCEPTUAL, true, true);
-            }
-
-            alert(newName + "\nSaved with " + (profile === "sRGB" ? "sRGB" : "embedded") + " profile.");
+            alert("The operation was canceled.");
         }
-    } else {
-        alert("The operation was canceled.");
     }
 } else {
     alert("No document open!");
